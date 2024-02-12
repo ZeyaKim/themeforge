@@ -1,8 +1,8 @@
-import GPT from "./src/gpt.js";
+import ChatGPTClient from "./src/gpt_client.js";
 
 document.getElementById("changeColorBtn").addEventListener("click", function() {
-    const gpt = new GPT();
-    document.getElementById("heading").style.color = gpt.change_css_pallette();
+    const gptClient = new ChatGPTClient();
+    document.getElementById("heading").style.color = gptClient.change_css_pallette();
 });
 
 document.getElementById("keywordSubmitBtn").addEventListener("submit", function() {
