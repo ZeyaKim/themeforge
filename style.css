@@ -1,11 +1,13 @@
 :root {
-  --content-width: 900px;
+  /* Color Variables */
   --primary-color: #e1574f;
   --secondary-color: #121100;
   --background-color: #fff7e1;
   --ui-color: #00151d;
   --font-color: #cd4b49;
 
+  /* Size Variables */
+  --content-width: 900px;
   --header-height: 70px;
 }
 
