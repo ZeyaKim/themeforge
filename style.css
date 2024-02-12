@@ -1,0 +1,67 @@
+:root {
+  --content-width: 900px;
+  --primary-color: #e1574f;
+  --secondary-color: #121100;
+  --background-color: #fff7e1;
+  --ui-color: #00151d;
+  --font-color: #cd4b49;
+
+  --header-height: 70px;
+}
+
+h1 {
+  color: var(--font-color);
+  size: 25px; 
+}
+p {
+  color: var(--font-color);
+}
+
+/* header를 상단에 고정하고 전체 너비를 사용하게 함 */
+header {
+  position: fixed;
+  width: 100%;
+  height: var(--header-height);
+  top: 0;
+  left: 0;
+  background-color: var(--secondary-color);
+  z-index: 1; /* 다른 요소들 위에 나타나도록 함 */
+  display: flex;
+  justify-content: center;
+}
+
+#logo {
+    width: var(--header-height);
+    height: var(--header-height);
+}
+
+/* 본문 컨텐츠에 상단 여백 추가 */
+body {
+  padding-top: var(--header-height);
+}
+
+main {
+  display: flex;
+  width: var(--content-width);
+  background-color: var(--background-color);
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto; /* 본문 내용을 중앙에 정렬 */
+  min-height: calc(100vh - var(--header-height)); /* header 높이를 제외한 뷰포트 높이 */
+}
+
+nav {
+  width: var(--content-width);
+  flex-direction: row;
+  display: flex;
+}
+
+footer {
+  background-color: var(--background-color);
+  width: 100%;
+  padding: 10px 0;
+  color: var(--font-color);
+  text-align: center;
+  bottom: 0;
+  left: 0;
+}
