@@ -14,6 +14,10 @@ class ThemeManager {
     console.log(this.palette[color_idx]);
     return this.palette[color_idx]
   }
+
+  // TODO change theme data using input themedataJson
+  change_theme(themeDataJson) {
+  }
 }
 
 export default ThemeManager
