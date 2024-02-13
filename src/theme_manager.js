@@ -8,7 +8,7 @@ class ThemeManager {
     ]
   }
 
-  change_css_pallette() {
+  changeCSSPalette() {
     const color_idx = (ThemeManager.current_idx) % this.palette.length;
     ThemeManager.current_idx += 1;
     console.log(this.palette[color_idx]);
@@ -16,7 +16,7 @@ class ThemeManager {
   }
 
   // TODO change theme data using input themedataJson
-  change_theme(themeDataJson) {
+  changeTheme(themeDataJson) {
   }
 }
 
