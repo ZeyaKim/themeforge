@@ -6,11 +6,10 @@ class ChatGPTClient {
 
   apiPost = async (keyword) => {
     const request_data = this.createRequest(keyword);
-    
     const response = await fetch(GPT_API_URL, request_data);
     const json = await response.json();
     console.log(json);
-    return json.choices;
+    return json.choices[0].message.content;
   }
 
   createRequest(keyword) {
@@ -26,27 +25,19 @@ class ChatGPTClient {
 
   createRequestBody(keyword) {
     const userMessage = this.createUserMessage(keyword);
-    const requestBody = {
-      "model": "gpt-3.5-turbo",
-      "messages": [
-        {
+    const requestBody = [{
           "role": "system",
           "content": "you can get the color list of the keyword you want. Please enter the keyword."
         },
         {
           "role": "user",
           "content": userMessage
-        }
-      ],
-      "max_tokens": 1024,
-      "top_p": 1,
-      "temperature": 0.7,
-    }  
-    return 
+        }]
+    return requestBody
   };
 
   createUserMessage(keyword) {
-    return `When you look at a ${keyword}, answer the three colors that come to mind in hexcode format. Answer in Korean:`
+    return `When you look at a ${keyword}, please respond with the three colors that come to mind in lowercase hexcode format for primary-color, secondary-color, and background-color in JSON format.`
   }
 }
 
