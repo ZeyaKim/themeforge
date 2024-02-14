@@ -14,7 +14,7 @@
   - 실행 url : [https://Zeyakim.github.io/themeforge]
 
 ## 설계
-  ### 와이어프레임
-<p align="center">
-  <img src="https://github.com/ZeyaKim/themeforge/assets/118428615/b7dda4f2-5372-4fb1-ba62-9a9db3d6ce21">
-</p>
+
+### 와이어프레임
+  
+![와이어프레임](https://github.com/ZeyaKim/themeforge/assets/118428615/b7dda4f2-5372-4fb1-ba62-9a9db3d6ce21)
