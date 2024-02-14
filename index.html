@@ -13,14 +13,43 @@
     </nav>
   </header>
   <main>
-    <form id="keywordForm">
-        <label for="keywordInput">키워드 입력</label><br>
+    <section id="inputSection">
+      <form id="inputForm">
+        <label for="countInput">example count(max 3)</label><br>
+        <select id="countInput" name="count"> 
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select><br>
+        <label for="keywordInput">Input Keyword</label><br>
         <input id="keywordInput" type="text" name="keyword" placeholder="keyword">
         <input id="keywordSubmitBtn" type="submit" value="Enter">
-    </form>
-    <p id="response">response</p>
-    <h1 id="heading">글자 색깔 바꾸기</h1>
-    <button id="changeColorBtn">Change Font Color!</button>
+      </form>
+    </section>
+    <h2 id="example_heading">Examples</h2>
+    <ul id="exampleList">
+      <li class="theme-item">
+        <h3>Example 1</h3>
+      </li>
+      <li class="theme-item">
+        <h3>Example 2</h3>
+      </li>
+      <li class="theme-item">
+        <h3>Example 3</h3>
+      </li>
+    </ul>
+    <h2 id="savedThemes">Saved Themes</h2>
+    <ul id="savedThemeList">
+      <li class="theme-item">
+        <h3>Saved 1</h3>
+      </li>
+      <li class="theme-item">
+        <h3>Saved 2</h3>
+      </li>
+      <li class="theme-item">
+        <h3>Saved 3</h3>
+      </li>
+    </ul>
   </main>
   <footer>
     <p>&copy; 2024 ThemeForge</p>
