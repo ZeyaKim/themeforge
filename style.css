@@ -17,9 +17,11 @@
   margin: 0;
 }
 
-h1 {
+nav > h2 {
+  font-family: 'Oswald';
+  font-weight: 400;
   color: var(--font-color);
-  size: 25px; 
+  size: 36px; 
 }
 p {
   color: var(--font-color);
@@ -42,6 +44,59 @@ header {
   width: var(--header-height);
   height: var(--header-height);
   box-sizing: border-box; 
+}
+
+#banner {
+  display: flex;
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+  flex-direction: column;
+  width: 1920px;
+  height: 400px;
+}
+
+#bannerText {
+  margin-top: -150px;
+  position: absolute;
+  text-align: center;
+  z-index: 2;
+  color: var(--background-color);
+}
+
+#bannerText h1 {
+  font-family: 'Oswald';
+  font-weight: 400;
+  font-size: 72px;
+  margin-bottom: 30px;
+}
+
+#bannerText p {
+  font-size: 36px;
+  color: var(--background-color);
+}
+
+#bannerImgContainer {
+  position: absolute;
+  width: 100%;    /* 이미지 너비를 부모 요소의 100%로 설정 */
+  height: 100%;   /* 이미지 높이를 부모 요소의 100%로 설정 */
+  position: relative;
+}
+
+#bannerImg {
+  width: 100%;    /* 이미지 너비를 부모 요소의 100%로 설정 */
+  height: 100%;   /* 이미지 높이를 부모 요소의 100%로 설정 */
+  object-fit: cover; /* 이미지의 가로, 세로 비율을 유지하면서 이미지를 확대 또는 축소하여 부모 요소에 맞춤 */
+}
+
+#bannerImgContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(18, 17, 0, 0.7); /* 적용하고 싶은 색상과 투명도 */
+  z-index: 0;
 }
 
 #exampleList {
@@ -76,7 +131,7 @@ header {
   height: 400px;
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   color: var(--background-color);
@@ -84,9 +139,43 @@ header {
 }
 
 #inputForm {
+  font-size: 24px;
+  margin-top: 220px;
+  position: absolute;
   padding: 10px;
-  background-color: var(--secondary-color);
   border-radius: 5px;
+  display: flex;
+  color: var(--background-color);
+}
+
+#inputForm fieldset {
+  padding: 10px;
+  border-style: none;
+  color: var(--background-color);
+  display: flex;
+}
+
+#inputForm section {
+  padding: 10px;
+}
+
+#keywordInput {
+  font-size: 18px;
+  font-weight: 700;
+  margin-top: 10px;
+  width: 600px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+#countInput {
+  margin-top: 10px;
+  width: 80px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ui-color);
 }
 
 .theme {
@@ -104,6 +193,7 @@ header {
 
 /* 본문 컨텐츠에 상단 여백 추가 */
 body {
+  width: 100%;
   padding: 0;
   margin: 0;
   padding-top: var(--header-height);
@@ -111,14 +201,15 @@ body {
 }
 
 main {  
+  width: 100%;
   height: 100%;
-  width: var(--content-width);
   display: flex;
   background-color: var(--background-color);
   flex-direction: column;
   align-items: center;
   margin: 0 auto; /* 본문 내용을 중앙에 정렬 */
   min-height: calc(100vh - var(--header-height)); /* header 높이를 제외한 뷰포트 높이 */
+  overflow: hidden;
 }
 
 nav {
