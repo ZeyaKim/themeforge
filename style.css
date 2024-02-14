@@ -90,7 +90,7 @@ footer {
 }
 
 footer > section {
-  text-align: end;
+  text-align: center;
   width: var(--content-width);
 }
 
