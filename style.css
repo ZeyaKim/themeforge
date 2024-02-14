@@ -98,7 +98,8 @@ footer p {
   font-size: 12px;
 }
 
-main >h2 {
+main > h2 {
+  font-family: 'Roboto';
   margin-top:10 px;
   margin-bottom: 10px;
 }
@@ -138,14 +139,14 @@ main >h2 {
 
 #resetBtnText {
   font-family: 'Roboto';
-  margin-left: 4px;
+  margin-left: 5px;
   font-size: 18px;
   font-weight: 700;
   cursor: pointer;
 }
 
 #resetBtn > i {
-  margin-right: 4px;
+  margin-right: 5px;
   font-size: 18px;
 }
 
@@ -271,6 +272,12 @@ main >h2 {
   border-radius: 15px;
 }
 
+.input-label {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 22px;
+}
+
 #keywordInput {
   font-size: 18px;
   font-weight: 700;
@@ -302,8 +309,6 @@ main >h2 {
   color: var(--background-color);
   cursor: pointer;
 }
-
-
 
 .theme {
   color: var(--font-color);
