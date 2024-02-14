@@ -10,8 +10,14 @@
 <body>
   <header>
     <nav id="headerNav">
-      <img id="logo" src="assets/logo.jpg" alt="ThemeForge 로고">
-      <h2 id="logoHeading">ThemeForge</h2>
+      <section id="logoContainer">
+        <img id="logo" src="assets/logo.jpg" alt="ThemeForge 로고">
+        <h2 id="logoHeading">ThemeForge</h2>
+      </section>        
+      <button id="resetBtn" type="button" value="Reset">
+        <label id="resetBtnText">Reset</label>
+        <i class="fa-solid fa-delete-left"></i>
+      </button>
     </nav>
   </header>
   <main>
@@ -73,7 +79,9 @@
     <hr>
   </main>
   <footer>
-    <p>&copy; 2024 ThemeForge</p>
+    <section id="footerNav">
+      <p>&copy; 2024 ThemeForge</p>
+    </section>
   </footer>
   <script type="module" src="index.js"></script>
 </body>
