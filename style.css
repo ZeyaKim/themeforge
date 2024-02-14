@@ -9,6 +9,12 @@
   /* Size Variables */
   --content-width: 900px;
   --header-height: 70px;
+  --golden-ratio: 1.618;
+}
+
+* {
+  padding: 0;
+  margin: 0;
 }
 
 h1 {
@@ -33,18 +39,81 @@ header {
 }
 
 #logo {
-    width: var(--header-height);
-    height: var(--header-height);
+  width: var(--header-height);
+  height: var(--header-height);
+  box-sizing: border-box; 
+}
+
+#exampleList {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.theme-item {
+  padding: 0;
+  margin: 0;
+  height: 150px;
+  width: 120px;
+  list-style: none;
+  text-align: center;
+  padding: 10px 0;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: var(--font-color);
+  background-color: var(--ui-color);
+}
+
+#inputSection {
+  padding: 0;
+  margin: 0;
+  background-image: url('./assets/banner.jpg');
+  background-size: cover;
+  height: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: var(--background-color);
+  background-color: #00ff00;
+}
+
+#inputForm {
+  padding: 10px;
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+}
+
+.theme {
+  color: var(--font-color);
+  background-color: var(--background-color);
+}
+
+#savedThemeList {
+  min-height: 600px;
+  width: var(--content-width);
+  background-color: var(--primary-color);
+  display: flex;
+  list-style-type: none;
 }
 
 /* 본문 컨텐츠에 상단 여백 추가 */
 body {
+  padding: 0;
+  margin: 0;
   padding-top: var(--header-height);
+  background-color: var(--ui-color);
 }
 
-main {
-  display: flex;
+main {  
+  height: 100%;
   width: var(--content-width);
+  display: flex;
   background-color: var(--background-color);
   flex-direction: column;
   align-items: center;
@@ -59,7 +128,7 @@ nav {
 }
 
 footer {
-  background-color: var(--background-color);
+  background-color: var(--secondary-color);
   width: 100%;
   padding: 10px 0;
   color: var(--font-color);
