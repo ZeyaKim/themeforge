@@ -5,12 +5,13 @@
   <title>ThemeForge</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
   <header>
     <nav id="headerNav">
       <img id="logo" src="assets/logo.jpg" alt="ThemeForge 로고">
-      <h2>ThemeForge</h2>
+      <h2 id="logoHeading">ThemeForge</h2>
     </nav>
   </header>
   <main>
@@ -27,7 +28,7 @@
         <fieldset id="inputField">
           <section class="input-group">
             <label for="keywordInput">Input Keyword</label><br>
-            <input id="keywordInput" type="text" name="keyword" placeholder="keyword">
+            <input id="keywordInput" type="text" name="keyword" placeholder="  keyword">
           </section>
           <section class="input-group">
             <label for="countInput">Count</label><br>
@@ -37,11 +38,14 @@
               <option value="3">3</option>
             </select>
           </section>
-          <input id="keywordSubmitBtn" type="submit" value="Enter">
+          <button id="keywordSubmitBtn" type="button" value="Enter">
+            <i class="fa-solid fa-right-to-bracket"></i>
+          </button>
         </fieldset>
       </form>
     </section>
     <h2 id="example_heading">Examples</h2>
+    <hr>
     <ul id="exampleList">
       <li class="theme-item">
         <h3>Example 1</h3>
@@ -54,6 +58,7 @@
       </li>
     </ul>
     <h2 id="savedThemes">Saved Themes</h2>
+    <hr>
     <ul id="savedThemeList">
       <li class="theme-item">
         <h3>Saved 1</h3>
@@ -65,6 +70,7 @@
         <h3>Saved 3</h3>
       </li>
     </ul>
+    <hr>
   </main>
   <footer>
     <p>&copy; 2024 ThemeForge</p>

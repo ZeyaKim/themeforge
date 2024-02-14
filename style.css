@@ -17,12 +17,40 @@
   margin: 0;
 }
 
+body {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  padding-top: var(--header-height);
+  background-color: var(--ui-color);
+}
+
+main {  
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: var(--background-color);
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto; /* 본문 내용을 중앙에 정렬 */
+  min-height: calc(100vh - var(--header-height)); /* header 높이를 제외한 뷰포트 높이 */
+  overflow: hidden;
+}
+nav {
+  width: var(--content-width);
+  align-items: center;
+  display: flex;
+  justify-content: start;
+}
+
 nav > h2 {
   font-family: 'Oswald';
   font-weight: 400;
+  font-size: 32px;
   color: var(--font-color);
   size: 36px; 
 }
+
 p {
   color: var(--font-color);
 }
@@ -35,15 +63,38 @@ header {
   top: 0;
   left: 0;
   background-color: var(--secondary-color);
-  z-index: 1; /* 다른 요소들 위에 나타나도록 함 */
+  z-index: 5; /* 다른 요소들 위에 나타나도록 함 */
   display: flex;
   justify-content: center;
+  text-align: center;
+}
+
+hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: var(--content-width);
+  height: 2px;;
+  background-color: var(--ui-color);
+}
+
+footer {
+  background-color: var(--background-color);
+  width: 100%;
+  padding: 10px 0;
+  color: var(--font-color);
+  text-align: center;
+  bottom: 0;
+  left: 0;
 }
 
 #logo {
   width: var(--header-height);
   height: var(--header-height);
   box-sizing: border-box; 
+}
+
+#logoHeading {
+  margin-left: 10px;
 }
 
 #banner {
@@ -159,6 +210,14 @@ header {
   padding: 10px;
 }
 
+#inputForm input {
+  border-radius: 15px;
+}
+
+#inputForm select {
+  border-radius: 15px;
+}
+
 #keywordInput {
   font-size: 18px;
   font-weight: 700;
@@ -169,14 +228,29 @@ header {
 }
 
 #countInput {
+  text-align: center; /* Chrome, Safari, IE에서는 선택된 옵션에만 영향 */
   margin-top: 10px;
-  width: 80px;
-  height: 40px;
+  width: 60px;
+  height: 40px;  
   border-radius: 5px;
   font-size: 18px;
   font-weight: 700;
   color: var(--ui-color);
 }
+
+#keywordSubmitBtn {
+  margin-top: 58px;
+  margin-left: 4px;
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  background-color: rgba(255, 255, 255, 0.0);
+  border: none;
+  color: var(--background-color);
+  cursor: pointer;
+}
+
+
 
 .theme {
   color: var(--font-color);
@@ -184,46 +258,16 @@ header {
 }
 
 #savedThemeList {
-  min-height: 600px;
+  min-height: 400px;
   width: var(--content-width);
-  background-color: var(--primary-color);
   display: flex;
   list-style-type: none;
 }
 
 /* 본문 컨텐츠에 상단 여백 추가 */
-body {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  padding-top: var(--header-height);
-  background-color: var(--ui-color);
-}
 
-main {  
-  width: 100%;
-  height: 100%;
-  display: flex;
-  background-color: var(--background-color);
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto; /* 본문 내용을 중앙에 정렬 */
-  min-height: calc(100vh - var(--header-height)); /* header 높이를 제외한 뷰포트 높이 */
-  overflow: hidden;
-}
 
-nav {
-  width: var(--content-width);
-  flex-direction: row;
-  display: flex;
-}
-
-footer {
-  background-color: var(--secondary-color);
-  width: 100%;
-  padding: 10px 0;
-  color: var(--font-color);
-  text-align: center;
-  bottom: 0;
-  left: 0;
+#example_heading {
+  margin-top: 20px;
+  color: var(--secondary-color);
 }
