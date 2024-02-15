@@ -19,16 +19,35 @@ const ChatGPTClient = (function() {
   The Action Color is applied to interactive elements like buttons or links to encourage user interaction and support the Primary Color.
   The Background Color sets the overall mood of the design.
   The Font Color is chosen to ensure maximum readability against the background.
-  Font have reverse Shading by background color and action color.
   Color selection rules:
-
   Avoid complementary colors between the Primary Color with Background Color and Action Color.
   The Background Color must have sufficient brightness.
   The Font Color should be darker than the Background Color and have sufficient saturation.
-  If the requested count exceeds 2, the response should include both a lighter and a darker example.
+  Font have reverse Shading by background color and action color.
   except action_color, all colors should not have too much saturation.
   If Primary Color is too dark, the Font Color and background_color must be lighter than the primary color.
   If Primary Color is too light, the Font Color and background_color must be darker than the primary color.
+  If the requested count exceeds 2, the response should include both a lighter and a darker example.
+  action color is similar complementary color with primary color.
+  font color always isn't similary with action color.
+  action color should be more saturated than primary color but not too much.
+  action color never be similar with font color.
+  font color isn't too much constrast with action color.
+  [
+    {
+      "primary_color": "#ff4500",
+      "action_color": "#ffd700",
+      "background_color": "#f0f0f0",
+      "font_color": "#333333"
+    },
+    {
+      "primary_color": "#326347",
+      "action_color": "#00ced1",
+      "background_color": "#333333",
+      "font_color": "#ffffff"
+    }
+  ]
+  respond must be json array format even count is 1. hexcode is always lowercase. don't answer any text without json array format.
   `;
 
   /**
@@ -92,17 +111,7 @@ const ChatGPTClient = (function() {
    * @returns {string} 사용자 메시지
    */
   const createUserMessage = function(keyword, count) {
-    return `colors about ${keyword}, ${count} examples, don't answer any text without json format. hexcode is always lowercase.`;
-  };
-
-  /**
-   * 응답 내용에서 JSON 데이터를 추출합니다.
-   * @function extractJsonFromContent
-   * @param {string} content - API 응답 내용
-   * @returns {Object} JSON으로 파싱된 데이터
-   */
-  const extractJsonFromContent = function(content) {
-    return JSON.parse(content);
+    return `colors about ${keyword}, ${count} examples, don't answer any text without json array format. hexcode is always lowercase.`;
   };
 
   return {
@@ -110,7 +119,6 @@ const ChatGPTClient = (function() {
     createRequest,
     createRequestBody,
     createUserMessage,
-    extractJsonFromContent
   };
 })();
 
