@@ -28,16 +28,47 @@ sequenceDiagram
     deactivate Index
     activate ThemeManager
     loop
-        ThemeManager->>Theme: 리스트에서 테마 객체 생성
+        create participant ExampleTheme
+        ThemeManager->>ExampleTheme: 테마 객체 생성 후 리스트 삽입
     end
-    loop 각 테마 객체에 대해
         ThemeManager-)Browser: 예제 테마 리스트 요청
         Browser--)ThemeManager: 예제 테마 리스트 전달
-        ThemeManager->>Theme: 테마 객체에 이벤트 리스너 추가
+    loop 
+        ThemeManager-)Browser: 예제 테마 리스트 요소 요청
+        Browser--)ThemeManager: 예제 테마 리스트 요소 전달
+        ThemeManager-)Browser: 예제 테마 리스트 요소에 이벤트 리스너 추가
     end
-    loop 각 테마 객체에 대해
-        ThemeManager-)Browser: 테마 객체를 UI에 표시
+    loop
+        ThemeManager-)Browser: 테마 객체를 UI에 표시 
     end
     deactivate ThemeManager
+```
 
+```mermaid
+---
+title: save theme into Example Theme List
+---
+sequenceDiagram
+    actor User
+    participant Browser
+    participant Index
+    participant ThemeManager
+    participant ExampleTheme
+
+    User->>Browser: 테마 저장 버튼 클릭
+    Browser-)ThemeManager: 클릭된 테마의 themeId id 전달
+    ThemeManager->>ThemeManager: 클릭된 테마를 리스트에서 검색
+    ThemeManager->>ExampleTheme: 클릭된 테마의 정보를 json화
+    ExampleTheme-->>ThemeManager: json화된 정보 전달
+    create participant SavedTheme
+    ThemeManager->>SavedTheme: 정보를 바탕으로 SavedTheme 객체 생성 후 리스트 삽입
+    ThemeManager-)Browser: json화된 정보를 세션 스토리지에 저장
+    destroy ExampleTheme
+    ThemeManager-xExampleTheme: 예제 테마 리스트 초기화
+    ThemeManager-)Browser: 저장된 테마 리스트 요청
+    Browser--)ThemeManager: 저장된 테마 리스트 전달
+    ThemeManager-)Browser: 저장된 테마 리스트 요소 요청
+    Browser--)ThemeManager: 저장된 테마 리스트 요소 전달
+    ThemeManager-)Browser: 저장된 테마 리스트 요소에 이벤트 리스너 추가
+    ThemeManager-)Browser: 테마 객체를 UI에 표시 
 ```
