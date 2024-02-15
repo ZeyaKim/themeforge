@@ -63,9 +63,8 @@ gantt
 
 ### 와이어프레임
 
-- figma로 초기 화면 구성을 디자인하였음
-
-![와이어프레임](https://github.com/ZeyaKim/themeforge/assets/118428615/b7dda4f2-5372-4fb1-ba62-9a9db3d6ce21)
+- figma로 초기 화면 구성을 디자인하였음. 와이어프레임을 하려다가 더 나가서 와이어프레임 대신 화면 디자인을 첨부하였음.
+![와이어프레임](https://github.com/ZeyaKim/themeforge/assets/118428615/28ca2f48-57b8-4083-a246-6b35660764b4)
 
 ### 폴더 구조
 
@@ -219,3 +218,14 @@ sequenceDiagram
 ### 개발 동기
 
 - 프로젝트 주제보다 디자인을 먼저 생각하고 있었는데, 어떤 컬러로 테마를 구성할까 고민하면서 ChatGPT에게 물어보았다. 그러다 키워드에서 컬러 테마를 추출하는 서비스를 만들어 보면 어떨까 생각하게 되었다.
+
+### 트러블슈팅
+
+- ChatGPT에게 Json Format Array로 데이터를 받아오기로 했는데, 가끔 답변이 json 형식이 아닌 경우가 있었다. 그래서 Shot 기법을 사용하여, 정상적인 답변의 예시를 첨부하니 해결되었다.
+
+- css 변수가
+
+## 참고
+
+- [https://brunch.co.kr/@chulhochoiucj0/17](https://brunch.co.kr/@chulhochoiucj0/17)
+  - 색상 설정에 대한 이론적인 지식을 많이 참고해서 프롬프트에 적용하였다.
