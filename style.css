@@ -210,7 +210,7 @@ main > h2 {
 }
 
 #exampleThemesList {
-  min-height: 180px;
+  min-height: 120px;
   padding: 0;
   margin: 0;
   width: var(--content-width);
