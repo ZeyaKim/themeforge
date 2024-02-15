@@ -23,7 +23,7 @@ document.getElementById("keywordSubmitBtn").addEventListener("click", async func
 
   // 키워드 유효성 검사
   if (keyword === "") {
-    console.log("keyword is empty");
+    alert("키워드를 입력해주세요.");
     return;
   }
 
@@ -33,7 +33,7 @@ document.getElementById("keywordSubmitBtn").addEventListener("click", async func
     const jsonThemeData = JSON.parse(content);
     ThemeManager.createExampleThemes(keyword, jsonThemeData);
   } catch (error) {
-    console.error("Failed to fetch theme data:", error);
+    alert("작업에 실패했습니다. 다시 시도해주세요.");
   }
 });
 
