@@ -5,7 +5,7 @@
  * @class
  * @param {string} [themeId=undefined] - 테마의 고유 식별자. 지정하지 않을 경우 무작위로 생성됩니다.
  * @param {string} [keyword="default"] - 테마와 관련된 키워드.
- * @param {Object} [colors={primary_color: "#e1574f", action_color: "#121100", background_color: "#fff7e1", font_color: "#333333"}] - 테마를 구성하는 색상들.
+ * @param {Object} [colors={primary_color: "#e1574f", action_color: "#7fffd4", background_color: "#fff7e1", font_color: "#333333"}] - 테마를 구성하는 색상들.
  * @param {string} colors.primary_color - 테마의 기본 색상.
  * @param {string} colors.action_color - 테마의 액션 색상. 버튼이나 링크 같은 인터랙티브 요소에 사용됩니다.
  * @param {string} colors.background_color - 테마의 배경 색상.
@@ -17,7 +17,7 @@ class Theme {
     keyword = "default",
     colors = {
       primary_color: "#e1574f",
-      action_color: "#121100",
+      action_color: "#7fffd4",
       background_color: "#fff7e1",
       font_color: "#333333"
     }
