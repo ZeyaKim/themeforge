@@ -21,6 +21,7 @@ class SavedTheme extends Theme {
           <h3>${this.keyword}</h3>
         </div>
         <div class="theme-item-body">
+          <p>content</p>
         </div>
         <div class="theme-item-footer">
           <button class="apply-theme-btn" type="button">
