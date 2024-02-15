@@ -5,32 +5,61 @@ import SavedTheme from './saved_theme.js';
 const ThemeManager = (function() {
   let exampleThemes = [];
   let savedThemes = [];
-  const defaultTheme = new Theme('default', {
-    primary_color: "#e1574f",
-    action_color: "#121100",
-    background_color: "#fff7e1",
-    font_color: "#333333"
-  });
-
+  const defaultTheme = new Theme();
   return {
-    createExampleThemes: function(keyword, jsonThemeData) {
+    applyLastSelectedTheme: function() {
+      const lastSelectedTheme = sessionStorage.getItem('lastSelectedTheme');
+      if (lastSelectedTheme === undefined) {
+        ThemeManager.resetTheme();
+      } else {
+        const lastSelectedThemeData = JSON.parse(lastSelectedTheme);
+        ThemeManager.applyTheme(new Theme(
+          lastSelectedThemeData.themeId,
+          lastSelectedThemeData.keyword,
+          lastSelectedThemeData.colors
+        ));
+      }
+    },
+
+    loadSavedThemes: function() {
+
+      const storedSavedThemes = sessionStorage.getItem('savedThemes');
+      if (storedSavedThemes === undefined) {
+        return;
+      }
+      const parsedSavedThemesData = JSON.parse(storedSavedThemes);
+      for (const savedThemeData of parsedSavedThemesData) {
+        const savedTheme = new SavedTheme(
+          savedThemeData.themeId,
+          savedThemeData.keyword,
+          savedThemeData.colors
+        );
+        savedThemes.push(savedTheme);
+      }
+
+      const savedThemesListElement = document.getElementById("savedThemesList");
+      this.insertThemesInList(savedThemes, savedThemesListElement);
+      this.setEventListenersForSavedThemes(savedThemes);
+      this.setStyleForThemeItems(savedThemes);
+      this.clearExampleThemesList();
+    },
+
+    createExampleThemes: function(keyword, jsonColorData) {
       if (this.is_already_saved(keyword)) {
         return;
       }
 
       this.clearExampleThemesList();
 
-      for (const themeData of jsonThemeData) {
-        const newExampleTheme = new ExampleTheme(keyword, themeData);
+      for (const colorData of jsonColorData) {
+        const newExampleTheme = new ExampleTheme(undefined, keyword, colorData);
         exampleThemes.push(newExampleTheme);
       }
       
       const exampleThemesListElement = document.getElementById("exampleThemesList");
       this.insertThemesInList(exampleThemes, exampleThemesListElement);
       this.setEventListenersForExampleThemes(exampleThemes);
-      for (const theme of exampleThemes) {
-        this.setStyleForThemeItem(theme);
-      }
+      this.setStyleForThemeItems(exampleThemes);
     },
 
     is_already_saved: function(keyword) {
@@ -69,41 +98,57 @@ const ThemeManager = (function() {
       });
     },
 
-    setStyleForThemeItem: function(theme) {
-      const themeItemElement = document.getElementById(theme.themeId);
-      themeItemElement.style.setProperty("--primary-color", theme.primaryColor);
-      themeItemElement.style.setProperty("--action-color", theme.actionColor);
-      themeItemElement.style.setProperty("--background-color", theme.backgroundColor);
-      themeItemElement.style.setProperty("--font-color", theme.fontColor);
+    setStyleForThemeItems: function(themes) {
+      themes.forEach(theme => {
+        const themeItemElement = document.getElementById(theme.themeId);
+        themeItemElement.style.setProperty("--primary-color", theme.primaryColor);
+        themeItemElement.style.setProperty("--action-color", theme.actionColor);
+        themeItemElement.style.setProperty("--background-color", theme.backgroundColor);
+        themeItemElement.style.setProperty("--font-color", theme.fontColor);
+      });
     },
 
     saveExampleTheme: function(exampleThemeId) {
       const exampleTheme = exampleThemes.find(theme => theme.themeId === exampleThemeId);
-      const newSavedTheme = new SavedTheme(exampleTheme);
+      const exampleThemeJson = exampleTheme.toJson();
+      const newSavedTheme = new SavedTheme(undefined, exampleThemeJson.keyword, exampleThemeJson.colors);
+
       savedThemes.push(newSavedTheme);
+
+      const savedThemesJsonList = []
+      savedThemes.forEach(theme => {
+        savedThemesJsonList.push(theme.toJson());
+      });
+      
+      sessionStorage.setItem('savedThemes', JSON.stringify(savedThemesJsonList));
 
       const savedThemesListElement = document.getElementById("savedThemesList");
       this.insertThemesInList([newSavedTheme], savedThemesListElement);
-      this.setEventListenersForSavedThemes(newSavedTheme);
-      this.setStyleForThemeItem(newSavedTheme);
+      this.setEventListenersForSavedThemes([newSavedTheme]);
+      this.setStyleForThemeItems([newSavedTheme]);
       this.clearExampleThemesList();
     },
 
-    setEventListenersForSavedThemes: function(theme) {
-      const savedThemeElement = document.getElementById(theme.themeId);
-      console.log(savedThemeElement);
-      const applyButton = savedThemeElement.querySelector(".apply-theme-btn");
-      const deleteButton = savedThemeElement.querySelector(".delete-theme-btn");
-      applyButton.addEventListener("click", () => {
-        this.applyTheme(theme);
-      });
+    setEventListenersForSavedThemes: function(themes) {
+      themes.forEach(theme => {
+        const savedThemeElement = document.getElementById(theme.themeId);
 
-      deleteButton.addEventListener("click", () => {
-        this.deleteSavedTheme(theme);
+        const applyButton = savedThemeElement.querySelector(".apply-theme-btn");
+        const deleteButton = savedThemeElement.querySelector(".delete-theme-btn");
+
+        applyButton.addEventListener("click", () => {
+          this.applyTheme(theme);
+        });
+
+        deleteButton.addEventListener("click", () => {
+          this.deleteSavedTheme(theme);
+        });
       });
     },
 
-    applyTheme: function(theme) {
+    applyTheme: function(theme = defaultTheme) {
+      sessionStorage.setItem('lastSelectedTheme', JSON.stringify(theme.toJson()));
+
       document.body.style.setProperty("--primary-color", theme.primaryColor);
       document.body.style.setProperty("--action-color", theme.actionColor);
       document.body.style.setProperty("--background-color", theme.backgroundColor);
@@ -115,8 +160,14 @@ const ThemeManager = (function() {
       savedThemesListElement.removeChild(document.getElementById(theme.themeId));
       savedThemes = savedThemes.filter(savedTheme => savedTheme.themeId !== theme.themeId);
       this.resetTheme();
-    },
 
+      const savedThemesJsonList = []
+      savedThemes.forEach(theme => {
+        savedThemesJsonList.push(theme.toJson());
+      });
+
+      sessionStorage.setItem('savedThemes', JSON.stringify(savedThemesJsonList));
+    },
     resetTheme: function() {
       this.applyTheme(defaultTheme);
     }

@@ -1,6 +1,11 @@
 import ChatGPTClient from "./src/chatgpt_client.js";
 import ThemeManager from "./src/theme_manager.js";
 
+document.addEventListener('DOMContentLoaded', (event) => {
+  ThemeManager.applyLastSelectedTheme();
+  ThemeManager.loadSavedThemes();
+});
+
 document.getElementById("keywordSubmitBtn").addEventListener("click", async function(event) {
   event.preventDefault();
 
@@ -23,3 +28,4 @@ document.getElementById("keywordSubmitBtn").addEventListener("click", async func
 document.getElementById("resetBtn").addEventListener("click", function() {
   ThemeManager.resetTheme();
 }); 
+

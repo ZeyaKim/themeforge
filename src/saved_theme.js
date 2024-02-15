@@ -1,13 +1,8 @@
 import Theme from './theme.js';
 
 class SavedTheme extends Theme {
-  constructor(exampleTheme) {
-    super(exampleTheme.keyword, {
-      primary_color: exampleTheme.primaryColor,
-      action_color: exampleTheme.actionColor,
-      background_color: exampleTheme.backgroundColor,
-      font_color: exampleTheme.fontColor
-    });
+  constructor(themeId = undefined, keyword, colors) {
+    super(themeId, keyword, colors);
 
     this.html = `<li id=${this.themeId} class="theme-item saved-theme">
         <div class="theme-item-header">

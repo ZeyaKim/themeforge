@@ -1,11 +1,12 @@
 import Theme from './theme.js';
 
 class ExampleTheme extends Theme {
-  constructor(keyword, themeDataJson) {
-    super(keyword, themeDataJson);
+  constructor(themeId = undefined, keyword, colors) {
+    super(themeId, keyword, colors);
+
     this.html = `<li id=${this.themeId} class="theme-item example-theme">
         <div class="theme-item-header">
-          <h3>${keyword}</h3>
+          <h3>${this.keyword}</h3>
         </div>
         <div class="theme-item-body">
         </div>
@@ -19,6 +20,5 @@ class ExampleTheme extends Theme {
       </li>`
   }
 }
-
 
 export default ExampleTheme;
