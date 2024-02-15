@@ -9,7 +9,7 @@ class SavedTheme extends Theme {
       font_color: exampleTheme.fontColor
     });
 
-    this.html = `<li class="theme-item saved-theme">
+    this.html = `<li id=${this.themeId} class="theme-item saved-theme">
         <div class="theme-item-header">
           <h3>${this.keyword}</h3>
         </div>
