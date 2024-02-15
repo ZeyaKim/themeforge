@@ -81,7 +81,7 @@ const ChatGPTClient = (function() {
    * @function createRequestBody
    * @param {string} keyword - 사용자가 지정한 키워드
    * @param {number} count - 요청할 색상의 개수
-   * @returns {Object[]} 시스템 메시지와 사용자 메시지를 포함하는 객체 배열
+   * @returns {Object} API 요청 본문
    */
   const createRequest = function(keyword, count) {
     return { 
