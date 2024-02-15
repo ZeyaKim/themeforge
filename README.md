@@ -1,4 +1,4 @@
-# themeforge
+# ThemeForge
 
 키워드-디자인 테마 생성기
 
