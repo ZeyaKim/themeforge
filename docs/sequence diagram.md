@@ -28,18 +28,22 @@ sequenceDiagram
     deactivate Index
     activate ThemeManager
     loop
-        create participant ExampleTheme
-        ThemeManager->>ExampleTheme: 테마 객체 생성 후 리스트 삽입
+        ThemeManager->>Theme: 리스트에서 테마 객체 생성
     end
-        ThemeManager-)Browser: 예제 테마 리스트 요청
-        Browser--)ThemeManager: 예제 테마 리스트 전달
-    loop 
-        ThemeManager-)Browser: 예제 테마 리스트 요소 요청
-        Browser--)ThemeManager: 예제 테마 리스트 요소 전달
-        ThemeManager-)Browser: 예제 테마 리스트 요소에 이벤트 리스너 추가
+    ThemeManager-)Browser: 예제 테마 리스트 요청
+    Browser--)ThemeManager: 예제 테마 리스트 전달
+    loop 각 테마 객체에 대해    
+        ThemeManager-)Browser: 예제 테마 리스트에 테마 html 삽입 요청
     end
-    loop
-        ThemeManager-)Browser: 테마 객체를 UI에 표시 
+    loop 각 테마 객체에 대해
+        ThemeManager-)Browser: 삽입된 테마 객체 요청
+        Browser--)ThemeManager: 삽입된 테마 객체 전달
+        ThemeManager->>Browser: 테마 객체에 이벤트 리스너 추가
+    end
+    loop 각 테마 객체에 대해
+        ThemeManager-)Browser: 삽입된 테마 객체 요청
+        Browser--)ThemeManager: 삽입된 테마 객체 전달
+        ThemeManager-)Browser: 테마 객체를 UI에 표시
     end
     deactivate ThemeManager
 ```
@@ -67,8 +71,11 @@ sequenceDiagram
     ThemeManager-xExampleTheme: 예제 테마 리스트 초기화
     ThemeManager-)Browser: 저장된 테마 리스트 요청
     Browser--)ThemeManager: 저장된 테마 리스트 전달
-    ThemeManager-)Browser: 저장된 테마 리스트 요소 요청
-    Browser--)ThemeManager: 저장된 테마 리스트 요소 전달
+    ThemeManager-)Browser: 저장된 테마 리스트에 html 삽입 요청
+    ThemeManager-)Browser: 삽입된 테마 객체 요청
+    Browser--)ThemeManager: 삽입된 테마 객체 전달
     ThemeManager-)Browser: 저장된 테마 리스트 요소에 이벤트 리스너 추가
+    ThemeManager-)Browser: 삽입된 테마 객체 요청
+    Browser--)ThemeManager: 삽입된 테마 객체 전달
     ThemeManager-)Browser: 테마 객체를 UI에 표시 
 ```
