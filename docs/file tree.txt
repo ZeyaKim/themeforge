@@ -1,0 +1,17 @@
+📦themeforge
+ ┣ 📂assets
+ ┃ ┣ 📜banner.jpg
+ ┃ ┗ 📜logo.jpg
+ ┣ 📂docs
+ ┃ ┣ 📜sequence diagram.md
+ ┃ ┗ 📜wbs.md
+ ┣ 📂src
+ ┃ ┣ 📜chatgpt_client.js
+ ┃ ┣ 📜example_theme.js
+ ┃ ┣ 📜saved_theme.js
+ ┃ ┣ 📜theme.js
+ ┃ ┗ 📜theme_manager.js
+ ┣ 📜index.html
+ ┣ 📜index.js
+ ┣ 📜README.md
+ ┗ 📜style.css
