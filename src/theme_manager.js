@@ -25,10 +25,10 @@ const ThemeManager = (function() {
   const applyLastSelectedTheme = function() {
     const lastSelectedTheme = sessionStorage.getItem('lastSelectedTheme');
     if (lastSelectedTheme === undefined) {
-      this.resetTheme();
+      resetTheme();
     } else {
       const lastSelectedThemeData = JSON.parse(lastSelectedTheme);
-      this.applyTheme(new Theme(
+      applyTheme(new Theme(
         lastSelectedThemeData.themeId,
         lastSelectedThemeData.keyword,
         lastSelectedThemeData.colors
@@ -75,7 +75,7 @@ const ThemeManager = (function() {
     }
 
     clearExampleThemesList();
-
+    console.log(jsonColorData)
     jsonColorData.forEach(colorData => {
       const newExampleTheme = new ExampleTheme(undefined, keyword, colorData);
       exampleThemes.push(newExampleTheme);
