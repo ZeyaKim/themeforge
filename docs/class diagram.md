@@ -44,8 +44,7 @@ classDiagram
         +primaryColor: string
         +actionColor: string
         +backgroundColor: string
-        +html: string
-        +html
+        +fontColor: string
         +toJson(): Object
     }
 
@@ -55,8 +54,8 @@ classDiagram
         +primaryColor: string
         +actionColor: string
         +backgroundColor: string
+        +fontColor: string
         +html: string
-        +html
         +toJson()
     }
 
@@ -66,8 +65,8 @@ classDiagram
         +primaryColor: string
         +actionColor: string
         +backgroundColor: string
+        +fontColor: string
         +html: string
-        +html
         +toJson()
     }
 
