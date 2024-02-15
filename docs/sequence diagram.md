@@ -46,7 +46,7 @@ sequenceDiagram
 
 ```mermaid
 ---
-title: save theme into Example Theme List
+title: save Example Theme
 ---
 sequenceDiagram
     actor User
