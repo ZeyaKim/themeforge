@@ -74,6 +74,7 @@ gantt
  ┃ ┣ 📜banner.jpg
  ┃ ┗ 📜logo.jpg
  ┣ 📂docs
+ ┃ ┣ 📜class diagram.md
  ┃ ┣ 📜sequence diagram.md
  ┃ ┗ 📜wbs.md
  ┣ 📂src
