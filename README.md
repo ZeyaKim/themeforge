@@ -171,6 +171,7 @@ classDiagram
 
 ### Sequence Diagram
 
+#### 키워드 제출
 ```mermaid
 ---
 title: Submit Theme Keyword
@@ -211,6 +212,8 @@ sequenceDiagram
     end
     deactivate ThemeManager
 ```
+
+#### 테마 저장
 
 ```mermaid
 ---
