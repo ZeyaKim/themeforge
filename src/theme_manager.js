@@ -1,4 +1,5 @@
-import Theme from "./theme.js";
+import ExampleTheme from './example_theme.js';
+import SavedTheme from './saved_theme.js';
 
 const ThemeManager = (function() {
   /*
@@ -13,14 +14,40 @@ const ThemeManager = (function() {
   let savedThemes = [];
 
   return {
-    createTheme: function(keyword, themeDataJson) {
-    },
     deleteTheme: function(index) {
-
+    },
+    createExampleThemes: function(keyword, jsonThemeData) {
+      for (const themeData of jsonThemeData) {
+        if (this.is_already_saved(keyword)) {
+          return;
+        }
+        exampleThemes.push(new ExampleTheme(keyword, themeData));
+      }
+      return exampleThemes;
+    },
+    getExampleThemes: function() {
+      return exampleThemes;
+    },
+    clearExampleThemes: function() {
+      exampleThemes = [];
+    },
+    saveTheme: function(theme) {
+      savedThemes.push(theme);
+    },
+    getSavedThemes: function() {
+      return savedThemes;
     },
     changeTheme: function(theme) {
 
     },
+    is_already_saved: function(keyword) {
+      for (const theme of savedThemes) {
+        if (theme.keyword === keyword) {
+          return true;
+        }
+      }
+      return false;
+    }
   }
 })();
 
