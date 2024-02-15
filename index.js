@@ -1,19 +1,41 @@
 import ChatGPTClient from "./src/chatgpt_client.js";
 import ThemeManager from "./src/theme_manager.js";
 
-document.getElementById("changeColorBtn").addEventListener("click", function() {
-  const themeManager = new ThemeManager();
-  document.getElementById("heading").style.color = themeManager.changeCSSPalette();
-});
-
 document.getElementById("keywordSubmitBtn").addEventListener("click", async function(event) {
-  console.log("submit");
   event.preventDefault();
-  const keyword = document.getElementById("keywordInput").value;
-  const gptClient = new ChatGPTClient();
-  const themeManager = new ThemeManager();
-  const themedataJson = await gptClient.apiPost(keyword);
 
-  themeManager.changeTheme(themedataJson);
-  document.getElementById("response").innerText = themedataJson;
+  const keywordElement = document.getElementById("keywordInput");
+  const keyword = keywordElement.value;
+  const count = document.getElementById("countInput").value;
+
+  keywordElement.value = "";
+
+  if (keyword === "") {
+    console.log("keyword is empty");
+    return;
+  }
+
+  await submitInput(keyword, count);
 });
+
+async function submitInput(keyword, count) {
+  const content = await ChatGPTClient.apiPost(keyword, count);
+  const jsonThemeData = JSON.parse(content);
+  const exampleThemes = ThemeManager.createExampleThemes(keyword, jsonThemeData);
+  const exampleThemesListElement = document.getElementById("exampleThemesList");
+
+  clearExampleThemesList(exampleThemesListElement);
+  insertThemesInList(exampleThemes, exampleThemesListElement);
+}
+
+function clearExampleThemesList(listElement) {
+  listElement.innerHTML = "";
+  ThemeManager.clearExampleThemes();
+}
+
+function insertThemesInList(themes, listElement) {
+  for (const theme of themes) {
+    const listItemHtml = theme.html;
+    listElement.insertAdjacentHTML('beforeend', listItemHtml);
+  }
+}
