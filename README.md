@@ -13,7 +13,53 @@
 - 서비스 URL
   - 실행 url : [https://Zeyakim.github.io/themeforge]
 
+## WBS
+
+```mermaid
+gantt
+    title ThemeForge Project
+    dateFormat  YYYY-MM-DD
+    section 기획 
+        기능 정의       : 2023-02-10, 2d
+        기본 UI 구성 설계    : 2023-02-11, 2d
+
+    section 디자인
+        html/css 설계 : 2023-02-11, 2d
+        figma 와이어프레임 작업 : 2023-02-12, 2d
+    section 구현
+        html/css 작업 : 2023-02-11, 3d
+        ChatGptClient 구현 : 2023-02-12, 2d
+        Theme 구현 : 2023-02-13, 2d
+        ThemeManager 구현 : 2023-02-13, 2d
+
+```
+
 ## 설계
+
+### 기술 스택
+
+HTML, CSS, JavaScript
+
+### 코딩 컨벤션
+
+#### HTML
+
+- tab size: 2
+- tag: camelCase
+- id: snake_case
+- class: kebab-case
+
+#### CSS
+
+- tab size: 2
+- property: snake_case
+
+#### JavaScript
+
+- tab size: 2
+- class: PascalCase
+- variable: camelCase
+- function: camelCase
 
 ### 와이어프레임
   
