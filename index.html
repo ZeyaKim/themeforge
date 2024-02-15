@@ -10,42 +10,42 @@
 <body>
   <header>
     <nav id="headerNav">
-      <section id="logoContainer">
+      <div id="logoContainer">
         <div id="logoImgBox">
           <img id="logo" src="assets/logo.jpg" alt="ThemeForge 로고">
         </div>
         <h2 id="logoHeading">ThemeForge</h2>
-      </section>        
+      </div>        
       <button id="resetBtn" type="button">
         <i class="fa-solid fa-rotate-right"></i>
-        Reset
+        <span>Reset</span>
       </button>
     </nav>
   </header>
   <main>
     <section id="banner">
-      <section id="bannerText">
+      <div id="bannerText">
         <h1>ThemeForge</h1>
         
         <p>Generate design themes from keyword <br> and save your favorite ones!</p>
-      </section>
-      <section id="bannerImgContainer">
+      </div>
+      <div id="bannerImgContainer">
         <img id="bannerImg" src="assets/banner.jpg" alt="banner">
-      </section>
+      </div>
       <form id="inputForm">
         <fieldset id="inputField">
-          <section class="input-group">
+          <div class="input-group">
             <label class="input-label" for="keywordInput">Input Keyword</label><br>
             <input id="keywordInput" type="text" name="keyword" placeholder="  keyword">
-          </section>
-          <section class="input-group">
+          </div>
+          <div class="input-group">
             <label class="input-label" for="countInput">Count</label><br>
             <select id="countInput" name="count"> 
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
             </select>
-          </section>
+          </div>
           <button id="keywordSubmitBtn" type="submit">
             <i class="fa-solid fa-right-to-bracket"></i>
           </button>
@@ -63,9 +63,9 @@
     <hr>
   </main>
   <footer>
-    <section id="footerNav">
-      <p>&copy; 2024 ThemeForge</p>
-    </section>
+    <div id="footerNav">
+      <p>&copy; 2024 ThemeForge. All rights reserved.</p>
+    </div>
   </footer>
   <script type="module" src="index.js"></script>
 </body>

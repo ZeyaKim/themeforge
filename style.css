@@ -1,10 +1,9 @@
 :root {
   /* Color Variables */
   --primary-color: #e1574f;
-  --action-color: #121100;
+  --action-color: #7fffd4;
   --background-color: #fff7e1;
-  --ui-color: #9ba0a1;
-  --font-color: #cd4b49;
+  --font-color: #773333;
 
   /* Size Variables */
   --content-width: 900px;
@@ -63,7 +62,7 @@ header {
   height: var(--header-height);
   top: 0;
   left: 0;
-  background-color: var(--action-color);
+  background-color: var(--primary-color);
   color: var(--primary-color);
   z-index: 5; /* 다른 요소들 위에 나타나도록 함 */
   display: flex;
@@ -76,7 +75,7 @@ hr {
   margin-bottom: 5px;
   width: var(--content-width);
   height: 2px;;
-  background-color: var(--action-color);
+  background-color: var(--primary-color);
   border: none;
 }
 
@@ -135,10 +134,10 @@ main > h2 {
 #logoHeading {
   margin-bottom: 2px;
   font-family: 'Oswald';
-  font-size: 28px;
+  font-size: 36px;
   font-weight: 400;
   margin-left: 10px;
-  color: var(--secondary-color);
+  color: var(--action-color);
 }
 
 #resetBtn {
@@ -150,11 +149,19 @@ main > h2 {
   font-size: 18px;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--background-color);
-  color: var(--primary-color);  
+  background-color: var(--action-color);
+  color: var(--font-color);  
   border-radius: 15px;
   cursor: pointer;
-  border: 1px solid var(--primary-color);
+  border: none;
+}
+
+#resetBtn > i {
+  margin-left: 5px;
+}
+
+#resetBtn > span {
+  margin-right: 5px;
 }
 
 #banner {
@@ -171,7 +178,7 @@ main > h2 {
   position: absolute;
   text-align: center;
   z-index: 2;
-  color: var(--background-color);
+  color: #fff7e1;
 }
 
 #bannerText h1 {
@@ -183,7 +190,6 @@ main > h2 {
 
 #bannerText p {
   font-size: 36px;
-  color: var(--background-color);
 }
 
 #bannerImgContainer {
@@ -229,6 +235,7 @@ main > h2 {
   cursor: pointer;
   border-radius: 8px;
   border: 1px solid var(--primary-color);
+  outline: 1px solid var(--action-color);
   background-color: var(--background-color);
   display: flex;
   flex-direction: column;
@@ -238,8 +245,8 @@ main > h2 {
 
 .theme-item > .theme-item-header {
   height: 30px;
-  color: var(--font-color);
-  background-color: var(--action-color);
+  color: var(--action-color);
+  background-color: var(--primary-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -249,14 +256,22 @@ main > h2 {
   margin-bottom: 1px;
 }
 
+
 .theme-item > .theme-item-body {
   flex-grow: 1;
+  font-family: 'Roboto';
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--font-color);
   background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .theme-item > .theme-item-footer {
   height: 30px;
-  background-color: var(--background-color);
+  background-color: var(--primary-color);
   display: flex;
   justify-content: end;
   align-items: center;
@@ -269,7 +284,7 @@ main > h2 {
   margin: 1px;
   margin-right: 3px;
   border-radius: 25%;
-  background-color: var(--primary-color);
+  background-color: var(--action-color);
   border: none;
   color: var(--font-color);
   cursor: pointer;
@@ -289,7 +304,7 @@ main > h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: var(--background-color);
+  color: #fff7e1;
   background-color: #00ff00;
 }
 
@@ -300,17 +315,16 @@ main > h2 {
   padding: 10px;
   border-radius: 5px;
   display: flex;
-  color: var(--background-color);
 }
 
 #inputForm fieldset {
   padding: 10px;
   border-style: none;
-  color: var(--background-color);
+  color: #fff7e1;
   display: flex;
 }
 
-#inputForm section {
+#inputForm div {
   padding: 10px;
 }
 
@@ -329,6 +343,7 @@ main > h2 {
 }
 
 #keywordInput {
+  border: none;
   font-size: 18px;
   font-weight: 700;
   margin-top: 10px;
@@ -338,6 +353,7 @@ main > h2 {
 }
 
 #countInput {
+  border: none;
   text-align: center; /* Chrome, Safari, IE에서는 선택된 옵션에만 영향 */
   margin-top: 10px;
   width: 60px;
@@ -345,7 +361,6 @@ main > h2 {
   border-radius: 5px;
   font-size: 18px;
   font-weight: 700;
-  color: var(--ui-color);
 }
 
 #keywordSubmitBtn {
@@ -353,20 +368,19 @@ main > h2 {
   margin-left: 4px;
   width: 40px;
   height: 40px;
-  background-color: rgba(255, 255, 255, 0.0);
   border: none;
-  color: var(--background-color);
+  
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--primary-color);
+  background-color: var(--action-color);
   border-radius: 20%;
 }
 
 #keywordSubmitBtn > i {
-  font-size: 28px;
-  
+  font-size: 24px;
+  color: var(--font-color);
   padding: 2px;
   
 }
