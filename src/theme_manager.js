@@ -2,37 +2,53 @@ import ExampleTheme from './example_theme.js';
 import SavedTheme from './saved_theme.js';
 
 const ThemeManager = (function() {
-  /*
-  const currentTheme = new Theme({
-    primary_color: "red",
-    secondary_color: "green",
-    background_color: "blue",
-    font_color: "white",
-  })
-  */
   let exampleThemes = [];
   let savedThemes = [];
 
   return {
-    deleteTheme: function(index) {
-    },
     createExampleThemes: function(keyword, jsonThemeData) {
-      for (const themeData of jsonThemeData) {
-        if (this.is_already_saved(keyword)) {
-          return;
-        }
-        exampleThemes.push(new ExampleTheme(keyword, themeData));
+      if (this.is_already_saved(keyword)) {
+        return;
       }
-      return exampleThemes;
+
+      this.clearExampleThemesList();
+
+      for (const themeData of jsonThemeData) {
+        const newExampleTheme = new ExampleTheme(keyword, themeData);
+        exampleThemes.push(newExampleTheme);
+      }
+      
+      const exampleThemesListElement = document.getElementById("exampleThemesList");
+      this.insertThemesInList(exampleThemes, exampleThemesListElement);
+      this.setEventListenersForExampleThemes(exampleThemes);
     },
-    getExampleThemes: function() {
-      return exampleThemes;
-    },
-    clearExampleThemes: function() {
+    clearExampleThemesList: function() {
       exampleThemes = [];
+      const exampleThemesListElement = document.getElementById("exampleThemesList");
+      exampleThemesListElement.innerHTML = "";
     },
-    saveTheme: function(theme) {
-      savedThemes.push(theme);
+    insertThemesInList(themes, listElement) {
+      for (const theme of themes) {
+        const listItemHtml = theme.html;
+        listElement.insertAdjacentHTML('beforeend', listItemHtml);
+      }
+    },
+    setEventListenersForExampleThemes: function(themes) {
+      themes.forEach(theme => {
+        const saveButton = document.getElementById(theme.themeId).querySelector(".save-theme-btn");
+        saveButton.addEventListener("click", () => {
+          this.saveExampleTheme(theme.themeId);
+        });
+      });
+    },
+    saveExampleTheme: function(exampleThemeId) {
+      const exampleTheme = exampleThemes.find(theme => theme.themeId === exampleThemeId);
+      const newSavedTheme = new SavedTheme(exampleTheme);
+      savedThemes.push(newSavedTheme);
+
+      const savedThemesListElement = document.getElementById("savedThemesList");
+      this.insertThemesInList([newSavedTheme], savedThemesListElement);
+      this.clearExampleThemesList();
     },
     getSavedThemes: function() {
       return savedThemes;

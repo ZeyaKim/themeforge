@@ -15,27 +15,22 @@ document.getElementById("keywordSubmitBtn").addEventListener("click", async func
     return;
   }
 
-  await submitInput(keyword, count);
-});
-
-async function submitInput(keyword, count) {
   const content = await ChatGPTClient.apiPost(keyword, count);
   const jsonThemeData = JSON.parse(content);
-  const exampleThemes = ThemeManager.createExampleThemes(keyword, jsonThemeData);
-  const exampleThemesListElement = document.getElementById("exampleThemesList");
+  ThemeManager.createExampleThemes(keyword, jsonThemeData);
+});
 
-  clearExampleThemesList(exampleThemesListElement);
-  insertThemesInList(exampleThemes, exampleThemesListElement);
+function setEventListenersForExampleThemes(themes) {
+  document.addEventListener('DOMContentLoaded', function() {
+    const exampleThemeApplyButtons = document.querySelectorAll(".example-theme .save-theme-btn");
+    exampleThemeApplyButtons.forEach((button, index) => {
+      button.addEventListener("click", function() {
+        saveExampleTheme(index);
+      });
+    });
+  });
 }
 
-function clearExampleThemesList(listElement) {
-  listElement.innerHTML = "";
-  ThemeManager.clearExampleThemes();
-}
-
-function insertThemesInList(themes, listElement) {
-  for (const theme of themes) {
-    const listItemHtml = theme.html;
-    listElement.insertAdjacentHTML('beforeend', listItemHtml);
-  }
+function saveExampleTheme(theme) {
+  const savedTheme = ThemeManager.saveExampleTheme(theme);
 }
