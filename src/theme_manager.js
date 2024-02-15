@@ -85,6 +85,7 @@ const ThemeManager = (function() {
       const savedThemesListElement = document.getElementById("savedThemesList");
       this.insertThemesInList([newSavedTheme], savedThemesListElement);
       this.setEventListenersForSavedThemes(newSavedTheme);
+      this.setStyleForThemeItem(newSavedTheme);
       this.clearExampleThemesList();
     },
 
