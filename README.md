@@ -114,7 +114,6 @@ classDiagram
         +exampleThemes: ExampleTheme[]
         +savedThemes: SavedTheme[]
         +defaultTheme: Theme
-        +applyTheme(Theme): undefined
         +loadSavedThemes(): undefined
         +createExampleThemes(string): Object[]
         +isAlreadySaved(string): boolean
