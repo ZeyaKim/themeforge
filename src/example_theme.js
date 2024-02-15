@@ -10,8 +10,10 @@ class ExampleTheme extends Theme {
         <div class="theme-item-body">
         </div>
         <div class="theme-item-footer">
-          <button class="save-theme-btn" type="button">
+          <button class="apply-theme-btn" type="button">
             <i class="fa-solid fa-check"></i>
+          <button class="save-theme-btn" type="button">
+            <i class="fa-solid fa-floppy-disk"></i>
           </button>
         </div>
       </li>`
