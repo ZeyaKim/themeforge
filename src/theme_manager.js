@@ -114,6 +114,7 @@ const ThemeManager = (function() {
       const savedThemesListElement = document.getElementById("savedThemesList");
       savedThemesListElement.removeChild(document.getElementById(theme.themeId));
       savedThemes = savedThemes.filter(savedTheme => savedTheme.themeId !== theme.themeId);
+      this.resetTheme();
     },
 
     resetTheme: function() {
