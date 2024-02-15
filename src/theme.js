@@ -1,15 +1,11 @@
 class Theme {
   constructor(keyword, themeDataJson) {
+    this.themeId = Math.random().toString(36).substring(2, 9);
     this.keyword = keyword;
-
     this.primaryColor = themeDataJson.primary_color;
-    this.secondaryColor = themeDataJson.secondary_color;
+    this.actionColor = themeDataJson.action_color;
     this.backgroundColor = themeDataJson.background_color;
     this.fontColor = themeDataJson.font_color;
-
-    this.html = `<li class="theme" id="${this.keyword}">
-      <p>${this.keyword}</p>
-    </li>`
   }
 }
 
