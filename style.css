@@ -9,7 +9,6 @@
   /* Size Variables */
   --content-width: 900px;
   --header-height: 70px;
-  --golden-ratio: 1.618;
 }
 
 * {
@@ -25,6 +24,10 @@ body {
   background-color: var(--ui-color);
 }
 
+body > * {
+  color: var(--font-color);
+}
+
 main {  
   width: 100%;
   height: 100%;
@@ -36,6 +39,7 @@ main {
   min-height: calc(100vh - var(--header-height)); /* header 높이를 제외한 뷰포트 높이 */
   overflow: hidden;
 }
+
 nav {
   width: var(--content-width);
   align-items: center;
@@ -51,9 +55,6 @@ nav > h2 {
   size: 36px; 
 }
 
-p {
-  color: var(--font-color);
-}
 
 /* header를 상단에 고정하고 전체 너비를 사용하게 함 */
 header {
@@ -74,7 +75,7 @@ hr {
   margin-bottom: 5px;
   width: var(--content-width);
   height: 2px;;
-  background-color: var(--ui-color);
+  background-color: var(--primary-color);
 }
 
 footer {
@@ -193,7 +194,9 @@ main > h2 {
   z-index: 0;
 }
 
-#exampleList {
+#exampleThemesList {
+  min-height: 18
+  0px;
   padding: 0;
   margin: 0;
   width: var(--content-width);
@@ -210,9 +213,51 @@ main > h2 {
   text-align: center;
   margin: 3px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 8px;
   color: var(--font-color);
   background-color: var(--ui-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow:hidden
+}
+
+.theme-item > .theme-item-header {
+  height: 30px;
+  background-color: var(--secondary-color);
+  color: var(--font-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.theme-item > .theme-item-body {
+  flex-grow: 1;
+  background-color: var(--background-color);
+}
+
+.theme-item > .theme-item-footer {
+  height: 30px;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.theme-item > .theme-item-footer > button {
+  aspect-ratio: 1/1;
+  height: 80%;
+  font-size: 9px;
+  margin: 1px;
+  margin-right: 3px;
+  border-radius: 25%;
+  background-color: var(--ui-color);
+  border: none;
+  color: var(--primary-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #inputSection {
@@ -314,6 +359,5 @@ main > h2 {
 
 #example_heading {
   margin-top: 20px;
-  color: var(--secondary-color);
 }
 
