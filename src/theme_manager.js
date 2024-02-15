@@ -1,14 +1,15 @@
+import Theme from './theme.js';
 import ExampleTheme from './example_theme.js';
 import SavedTheme from './saved_theme.js';
 
 const ThemeManager = (function() {
   let exampleThemes = [];
   let savedThemes = [];
-  const defaultTheme = new Theme({
-    primaryColor: "#e1574f",
-    actionColor: "#121100",
-    backgroundColor: "#fff7e1",
-    fontColor: "#333333"
+  const defaultTheme = new Theme('default', {
+    primary_color: "#e1574f",
+    action_color: "#121100",
+    background_color: "#fff7e1",
+    font_color: "#333333"
   });
 
   return {
@@ -60,12 +61,20 @@ const ThemeManager = (function() {
         saveButton.addEventListener("click", () => {
           this.saveExampleTheme(theme.themeId);
         });
+
+        const applyButton = document.getElementById(theme.themeId).querySelector(".apply-theme-btn");
+        applyButton.addEventListener("click", () => {
+          this.applyTheme(theme);
+        });
       });
     },
 
     setStyleForThemeItem: function(theme) {
       const themeItemElement = document.getElementById(theme.themeId);
-      
+      themeItemElement.style.setProperty("--primary-color", theme.primaryColor);
+      themeItemElement.style.setProperty("--action-color", theme.actionColor);
+      themeItemElement.style.setProperty("--background-color", theme.backgroundColor);
+      themeItemElement.style.setProperty("--font-color", theme.fontColor);
     },
 
     saveExampleTheme: function(exampleThemeId) {
