@@ -20,17 +20,6 @@ document.getElementById("keywordSubmitBtn").addEventListener("click", async func
   ThemeManager.createExampleThemes(keyword, jsonThemeData);
 });
 
-function setEventListenersForExampleThemes(themes) {
-  document.addEventListener('DOMContentLoaded', function() {
-    const exampleThemeApplyButtons = document.querySelectorAll(".example-theme .save-theme-btn");
-    exampleThemeApplyButtons.forEach((button, index) => {
-      button.addEventListener("click", function() {
-        saveExampleTheme(index);
-      });
-    });
-  });
-}
-
-function saveExampleTheme(theme) {
-  const savedTheme = ThemeManager.saveExampleTheme(theme);
-}
+document.getElementById("resetBtn").addEventListener("click", function() {
+  ThemeManager.resetTheme();
+}); 
