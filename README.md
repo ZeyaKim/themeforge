@@ -3,15 +3,16 @@
 키워드-디자인 테마 생성기
 
 - 목표
-  - 키워드에서 테마 데이터를 추출하고, 적용해 봄으로써 ui 디자인에 도움을 주는 서비스
+  - 키워드에서 테마 데이터를 추출하고 적용해볼 수 있는 페이지 제공 프로젝트
 
 - 사용방법
-  - 생성할 테마 개수를 입력해 주세요.
-  - 키워드를 입력해 주세요.
-  - 모든 옵션을 정상적으로 설정하였다면, 생성 버튼을 누르거나 엔터 키를 입력하세요.
+  1. 키워드를 입력해 주세요.
+  2. 생성할 테마 개수를 입력해 주세요.
+  3. 모든 옵션을 정상적으로 설정하였다면, 생성 버튼을 누르거나 엔터 키를 입력하세요.
 
 - 서비스 URL
-  - 실행 url : [https://Zeyakim.github.io/themeforge]
+  - 실행 url : [https://Zeyakim.github.io/themeforge](https://Zeyakim.github.io/themeforge)
+  - github url : [https://github.com/ZeyaKim/themeforge](https://github.com/ZeyaKim/themeforge)
 
 ## 설계
 
@@ -68,7 +69,107 @@ gantt
 
 ### 폴더 구조
 
+```plaintext
+📦themeforge
+ ┣ 📂assets
+ ┃ ┣ 📜banner.jpg
+ ┃ ┗ 📜logo.jpg
+ ┣ 📂docs
+ ┃ ┣ 📜sequence diagram.md
+ ┃ ┗ 📜wbs.md
+ ┣ 📂src
+ ┃ ┣ 📜chatgpt_client.js
+ ┃ ┣ 📜example_theme.js
+ ┃ ┣ 📜saved_theme.js
+ ┃ ┣ 📜theme.js
+ ┃ ┗ 📜theme_manager.js
+ ┣ 📜index.html
+ ┣ 📜index.js
+ ┣ 📜README.md
+ ┗ 📜style.css
+```
+
 ### 모듈 구조
+
+```mermaid
+---
+title: ThemeForge Module Structure
+---
+
+classDiagram
+    class Index {
+
+    }
+
+    class ChatGptClient {
+        +GPT_API_URL: string
+        +gpt_role: string
+        +apiPost(string, string): Promise<string>
+        +createRequest(string, number): Object
+        +createRequestBody(string, number): string
+        +createUserMessage(string, number): string
+    }
+
+    class ThemeManager {
+        +exampleThemes: ExampleTheme[]
+        +savedThemes: SavedTheme[]
+        +defaultTheme: Theme
+        +applyTheme(Theme): undefined
+        +loadSavedThemes(): undefined
+        +createExampleThemes(string): Object[]
+        +isAlreadySaved(string): boolean
+        +clearExampleThemesList(): undefined
+        +insertThemesInList(Theme[], HTMLElement): undefined
+        +setEventListenersForExampleThemes(Theme[]): undefined
+        +setStyleForExampleThemes(Theme[]): undefined
+        +saveExampleTheme(string): undefined
+        +setEventListenersForSavedThemes(SavedTheme[]): undefined
+        +applyTheme(Theme): undefined
+        +deleteSavedTheme(Theme): undefined
+        +resetTheme(): undefined
+    }
+
+    class Theme {
+        +themeId: string
+        +keyword: string
+        +primaryColor: string
+        +actionColor: string
+        +backgroundColor: string
+        +html: string
+        +html
+        +toJson(): Object
+    }
+
+    class ExampleTheme {
+        +themeId: string
+        +keyword: string
+        +primaryColor: string
+        +actionColor: string
+        +backgroundColor: string
+        +html: string
+        +html
+        +toJson()
+    }
+
+    class SavedTheme {
+        +themeId: string
+        +keyword: string
+        +primaryColor: string
+        +actionColor: string
+        +backgroundColor: string
+        +html: string
+        +html
+        +toJson()
+    }
+
+    Index ..> ChatGptClient
+    Index ..> ThemeManager
+    ThemeManager ..> Theme
+    ThemeManager --> ExampleTheme
+    ThemeManager --> SavedTheme
+    SavedTheme --|> Theme
+    ExampleTheme --|> Theme
+```
 
 ### Sequence Diagram
 
